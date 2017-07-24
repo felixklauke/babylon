@@ -37,6 +37,26 @@ class ConverterContainer {
         this.currentConverters = new HashMap<>();
 
         currentConverters.put(String.class, new StringConverter());
+
+        Converter<Byte> byteConverter = new ByteConverter();
+        currentConverters.put(Byte.TYPE, byteConverter);
+        currentConverters.put(Byte.class, byteConverter);
+
+        Converter<Float> floatConverter = new FloatConverter();
+        currentConverters.put(Float.TYPE, floatConverter);
+        currentConverters.put(Float.class, floatConverter);
+
+        Converter<Integer> integerConverter = new IntegerConverter();
+        currentConverters.put(Integer.TYPE, integerConverter);
+        currentConverters.put(Integer.class, integerConverter);
+
+        Converter<Long> longConverter = new LongConverter();
+        currentConverters.put(Long.TYPE, longConverter);
+        currentConverters.put(Long.class, longConverter);
+
+        Converter<Short> shortConverter = new ShortConverter();
+        currentConverters.put(Short.TYPE, shortConverter);
+        currentConverters.put(Short.class, shortConverter);
     }
 
     Set<Converter> getConverters() {

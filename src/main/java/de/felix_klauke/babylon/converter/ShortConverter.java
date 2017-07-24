@@ -24,5 +24,14 @@ package de.felix_klauke.babylon.converter;
 /**
  * @author Felix 'SasukeKawaii' Klauke
  */
-public class ShortConverter {
+public class ShortConverter implements Converter<Short> {
+    @Override
+    public String toConfigValue(Short element) {
+        return element.toString();
+    }
+
+    @Override
+    public Short fromConfigValue(String string) {
+        return Short.parseShort(string);
+    }
 }

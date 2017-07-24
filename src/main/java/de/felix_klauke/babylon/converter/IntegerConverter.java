@@ -24,5 +24,15 @@ package de.felix_klauke.babylon.converter;
 /**
  * @author Felix 'SasukeKawaii' Klauke
  */
-public class IntegerConverter {
+public class IntegerConverter implements Converter<Integer> {
+
+    @Override
+    public String toConfigValue(Integer element) {
+        return element.toString();
+    }
+
+    @Override
+    public Integer fromConfigValue(String string) {
+        return Integer.parseInt(string);
+    }
 }

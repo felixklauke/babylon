@@ -24,5 +24,14 @@ package de.felix_klauke.babylon.converter;
 /**
  * @author Felix 'SasukeKawaii' Klauke
  */
-public class LongConverter {
+public class LongConverter implements Converter<Long> {
+    @Override
+    public String toConfigValue(Long element) {
+        return element.toString();
+    }
+
+    @Override
+    public Long fromConfigValue(String string) {
+        return Long.parseLong(string);
+    }
 }

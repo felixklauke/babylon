@@ -24,5 +24,15 @@ package de.felix_klauke.babylon.converter;
 /**
  * @author Felix 'SasukeKawaii' Klauke
  */
-public class ByteConverter {
+public class ByteConverter implements Converter<Byte> {
+
+    @Override
+    public String toConfigValue(Byte element) {
+        return element.toString();
+    }
+
+    @Override
+    public Byte fromConfigValue(String string) {
+        return Byte.valueOf(string);
+    }
 }

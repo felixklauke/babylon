@@ -24,5 +24,14 @@ package de.felix_klauke.babylon.converter;
 /**
  * @author Felix 'SasukeKawaii' Klauke
  */
-public class FloatConverter {
+public class FloatConverter implements Converter<Float> {
+    @Override
+    public String toConfigValue(Float element) {
+        return element.toString();
+    }
+
+    @Override
+    public Float fromConfigValue(String string) {
+        return Float.valueOf(string);
+    }
 }
