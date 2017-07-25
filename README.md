@@ -58,3 +58,30 @@ Config config = new TestConfig();
 
 babylon.initializeConfig(config, new File("config.bbl"));
 ```
+
+_Comments in the config:_
+```java
+@Comment( "I am a commented field" )
+private String name = "SasukeKawaiiTheKing";
+```
+
+Comments will look like this: 
+```
+{
+	# I am a commented field
+	name: "SasukeKawaiiTheKing"
+}
+```
+
+_Renaming fields:_
+```java
+@Name( "customName" )
+private String name = "SasukeKawaiiTheKing";
+```
+
+Renaming will look like this:
+```
+{
+	customName: "SasukeKawaiiTheKing"
+}
+```
