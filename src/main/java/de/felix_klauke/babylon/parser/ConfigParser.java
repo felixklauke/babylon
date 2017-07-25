@@ -21,6 +21,7 @@
 
 package de.felix_klauke.babylon.parser;
 
+import de.felix_klauke.babylon.annotation.Name;
 import de.felix_klauke.babylon.annotation.Skip;
 import de.felix_klauke.babylon.config.Config;
 import de.felix_klauke.babylon.converter.Converter;
@@ -72,8 +73,14 @@ public class ConfigParser {
                 continue;
             }
 
+            String fieldName = field.getName();
 
-            Node currentNode = nodeContainer.getNodes().get(field.getName());
+            Name name = field.getAnnotation(Name.class);
+            if (name != null) {
+                fieldName = name.value();
+            }
+
+            Node currentNode = nodeContainer.getNodes().get(fieldName);
 
             if (currentNode instanceof NodeValue) {
                 Converter converter = this.converterManager.getConverter(field.getType());
@@ -91,9 +98,6 @@ public class ConfigParser {
         Map<String, Node> output = new HashMap<>();
 
         while (current != END_NODE) {
-
-            // Read comment
-            check('#');
 
             String name = parseValIdent();
             this.check(NODE_DELIMITER);

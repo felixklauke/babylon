@@ -22,6 +22,7 @@
 package de.felix_klauke.babylon.writer;
 
 import de.felix_klauke.babylon.annotation.Comment;
+import de.felix_klauke.babylon.annotation.Name;
 import de.felix_klauke.babylon.annotation.Skip;
 import de.felix_klauke.babylon.config.Config;
 import de.felix_klauke.babylon.converter.Converter;
@@ -85,8 +86,15 @@ public class ConfigWriter {
                 this.insertIdent();
             }
 
-            //TODO
-            stringBuilder.append(field.getName());
+
+            String fieldName = field.getName();
+
+            Name name = field.getAnnotation(Name.class);
+            if (name != null) {
+                fieldName = name.value();
+            }
+
+            stringBuilder.append(fieldName);
             stringBuilder.append(DELIMITER);
 
             Converter converter = this.converterManager.getConverter(value.getClass());

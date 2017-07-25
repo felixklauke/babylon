@@ -19,32 +19,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.felix_klauke.babylon.tokenizer;
+package de.felix_klauke.babylon.annotation;
 
-import java.io.Reader;
-import java.io.StreamTokenizer;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author Felix 'SasukeKawaii' Klauke
  */
-public class BabylonTokenizer extends StreamTokenizer {
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface Name {
 
-    public BabylonTokenizer(Reader r) {
-        super(r);
-
-        eolIsSignificant(false);
-        ordinaryChars('0', '9');
-        ordinaryChars('.', '.');
-        ordinaryChars('_', '_');
-        ordinaryChars('-', '-');
-        wordChars('a', 'b');
-        wordChars('A', 'B');
-        wordChars('0', '9');
-        wordChars('_', '_');
-        wordChars('.', '.');
-        wordChars('-', '-');
-        commentChar('#');
-        quoteChar('"');
-        whitespaceChars(0x00, 0x20);
-    }
+    String value();
 }
