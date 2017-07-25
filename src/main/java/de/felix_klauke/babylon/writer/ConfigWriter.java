@@ -21,6 +21,7 @@
 
 package de.felix_klauke.babylon.writer;
 
+import de.felix_klauke.babylon.annotation.Comment;
 import de.felix_klauke.babylon.annotation.Skip;
 import de.felix_klauke.babylon.config.Config;
 import de.felix_klauke.babylon.converter.Converter;
@@ -75,6 +76,14 @@ public class ConfigWriter {
             Object value = field.get(config);
 
             this.insertIdent();
+
+            Comment comment = field.getAnnotation(Comment.class);
+            if (comment != null) {
+                stringBuilder.append("# ").append(comment.value());
+
+                stringBuilder.append(LINE_BREAK);
+                this.insertIdent();
+            }
 
             //TODO
             stringBuilder.append(field.getName());

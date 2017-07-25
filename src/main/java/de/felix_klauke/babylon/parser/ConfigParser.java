@@ -72,6 +72,7 @@ public class ConfigParser {
                 continue;
             }
 
+
             Node currentNode = nodeContainer.getNodes().get(field.getName());
 
             if (currentNode instanceof NodeValue) {
@@ -90,6 +91,10 @@ public class ConfigParser {
         Map<String, Node> output = new HashMap<>();
 
         while (current != END_NODE) {
+
+            // Read comment
+            check('#');
+
             String name = parseValIdent();
             this.check(NODE_DELIMITER);
 
